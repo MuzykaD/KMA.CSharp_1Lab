@@ -11,7 +11,7 @@ namespace CSharp.Lab1
         string _surname;
         string _mail;
         List<Wallet> _wallets;
-
+        //constructor
         public User(string name, string surname, string mail)
         {
             _name = name;
@@ -23,7 +23,11 @@ namespace CSharp.Lab1
      public void addWalletToUser(Wallet wallet)
         {
             _wallets.Add(wallet);
-            wallet.setBelonging();
+           
+        }
+        public void removeWalletToUser(Wallet wallet)
+        {
+            _wallets.Remove(wallet);
         }
 
      public void walletInfo()
@@ -35,7 +39,7 @@ namespace CSharp.Lab1
                 Console.WriteLine("Start wallet balance: " + wallet.getStartBalance() + ".");
             }
         }
-
+        //getters
      public string getName()
         {
             return _name;
@@ -43,6 +47,27 @@ namespace CSharp.Lab1
         public string getSurname()
         {
             return _surname;
+        }
+
+   public string getMail()
+        {
+            return _mail;
+        }
+
+        public void setName(string name)
+        {
+            _name = name;
+
+        }
+        public void setSurame(string surname)
+        {
+            _surname = surname;
+
+        }
+
+        public void setMail(string mail)
+        {
+            _mail = mail;
         }
     }
 }
