@@ -4,14 +4,16 @@ using System.Text;
 
 namespace CSharp.Lab1
 {
-   public class User
+    public class User
     {
+        private List<string> categories = new List<string>();
 
         string _name;
         string _surname;
         string _mail;
         List<Wallet> _wallets;
 
+        //constructor
         public User(string name, string surname, string mail)
         {
             _name = name;
@@ -19,14 +21,20 @@ namespace CSharp.Lab1
             _mail = mail;
             _wallets = new List<Wallet>();
         }
-
-     public void addWalletToUser(Wallet wallet)
+        public void assignCategotyToWallet(string category, Wallet wallet) {
+            wallet.addCategory(category);
+        }
+        public void addWalletToUser(Wallet wallet)
         {
             _wallets.Add(wallet);
-            wallet.setBelonging();
+
+        }
+        public void removeWalletToUser(Wallet wallet)
+        {
+            _wallets.Remove(wallet);
         }
 
-     public void walletInfo()
+        public void walletInfo()
         {
             foreach (Wallet wallet in _wallets)
             {
@@ -35,14 +43,52 @@ namespace CSharp.Lab1
                 Console.WriteLine("Start wallet balance: " + wallet.getStartBalance() + ".");
             }
         }
-
-     public string getName()
+        //getters
+        public string getName()
         {
             return _name;
         }
+        public void addCategories(string category)
+        {
+            if (!categories.Contains(category))
+                categories.Add(category);
+        }
+
+        public void removeCategories(string category)
+        {
+            if (categories.Contains(category))
+                categories.Remove(category);
+        }
+
         public string getSurname()
         {
             return _surname;
+        }
+
+        public string getMail()
+        {
+            return _mail;
+        }
+
+        public void setName(string name)
+        {
+            _name = name;
+
+        }
+        public void setSurame(string surname)
+        {
+            _surname = surname;
+
+        }
+
+        public void setMail(string mail)
+        {
+            _mail = mail;
+        }
+
+        public List<Wallet> GetWallets()
+        {
+            return _wallets;
         }
     }
 }

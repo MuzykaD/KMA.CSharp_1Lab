@@ -11,13 +11,13 @@ namespace CSharp.Lab1
         string _currency;
         string _descr;
         string _date;
-
+        //constructor
         public Transaction(double sum, string curr)
         {
             _sum = sum;
             _currency = curr;
         }
-
+        //getters
         public double getSum()
         {
             return _sum;
@@ -27,8 +27,16 @@ namespace CSharp.Lab1
         {
             return _currency;
         }
+        //setters
+        public void setSum(double sum)
+        {
+            _sum = sum;
+        }
 
-
+        public void setCurrency(string curr)
+        {
+            _currency = curr;
+        }
         public void setDescription(string descr)
         {
             _descr = descr;
@@ -38,5 +46,7 @@ namespace CSharp.Lab1
         {
             _date = date;
         }
+
+       
     }
 }

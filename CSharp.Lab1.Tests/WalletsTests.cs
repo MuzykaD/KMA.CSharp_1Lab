@@ -31,14 +31,14 @@ namespace CSharp.Lab1.Tests
         [Fact]
         void shouldCreateWalletWithOneTransactionAndDeleteTransection()
         {
-            var wallet = new Wallet("MyDollars", 0, "DOL");
+            var wallet = new Wallet(null,"MyDollars", 0, "DOL");
             var transaction = new Transaction(1000, "UAH");
             transaction.setDescription("Charity");
             wallet.addTransaction(transaction);
 
-            //   Assert.Equal(1, wallet.getTransactions().Count())
+            Assert.True(1 == wallet.GetTransactions().Count);
             wallet.removeTransaction(transaction);
-            //   Assert.Equal(0, wallet.getTransactions().Count())
+            Assert.True(0 == wallet.GetTransactions().Count);
         }
 
     }
