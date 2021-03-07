@@ -6,10 +6,11 @@ namespace CSharp.Lab1
 {
     class User
     {
+
         string _name;
         string _surname;
         string _mail;
-        new List<Wallet> _wallets;
+        List<Wallet> _wallets;
 
         public User(string name, string surname, string mail)
         {
@@ -19,9 +20,19 @@ namespace CSharp.Lab1
             _wallets = new List<Wallet>();
         }
 
-       void addWalletToUser(Wallet wallet)
+     public void addWalletToUser(Wallet wallet)
         {
             _wallets.Add(wallet);
+        }
+
+     public void walletInfo()
+        {
+            foreach (Wallet wallet in _wallets)
+            {
+                Console.WriteLine("Name of the wallet: " + wallet.getName() + ".");
+                Console.WriteLine("Current wallet balance: " + wallet.getCurrBalance() + ".");
+                Console.WriteLine("Start wallet balance: " + wallet.getStartBalance() + ".");
+            }
         }
 
     }
