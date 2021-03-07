@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp.Lab1
 {
-    class Wallet
+   public class Wallet
     {
         //not all fields used in constructor cause they are not necessary in commin work
         string _name;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp.Lab1
 {
-    class Transaction
+   public class Transaction
     {
         //not all fields used in constructor cause they are not necessary in commin work
         double _sum;

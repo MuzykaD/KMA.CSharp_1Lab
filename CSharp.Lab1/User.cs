@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharp.Lab1
 {
-    class User
+   public class User
     {
 
         string _name;
