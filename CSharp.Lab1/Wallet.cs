@@ -12,6 +12,7 @@ namespace CSharp.Lab1
         double _startBalance;
         string _currency;
         string _descr;
+        bool _belongsToUser;
         List<Transaction> _transactions;
 
         public Wallet(string name, double balance, string currency)
@@ -21,6 +22,7 @@ namespace CSharp.Lab1
             _startBalance = balance;
             _currency = currency;
             _transactions = new List<Transaction>();
+            _belongsToUser = false;
 
         }
 
@@ -29,15 +31,27 @@ namespace CSharp.Lab1
             _transactions.Add(transaction);
             _currBalance += transaction.getSum();
         }
-
+        public void removeTransaction (Transaction transaction)
+        {
+            _transactions.Remove(transaction);
+            _currBalance -= transaction.getSum();
+        }
 
         public void walletInfo()
         {
-           
-            
+            if (_belongsToUser)
+            {
                 Console.WriteLine("Name of the wallet: " + _name + ".");
                 Console.WriteLine("Current wallet balance: " + _currBalance + ".");
                 Console.WriteLine("Start wallet balance: " + _startBalance + ".");
+
+            }
+            else
+            {
+                Console.WriteLine("Error! Wallet doen`t have master!");
+            }
+               
+              
             
         }
 
@@ -56,6 +70,22 @@ namespace CSharp.Lab1
         {
             return _startBalance;
         }
+        
+        public void setBelonging()
+        {
+            if(_belongsToUser)
+            {
+                _belongsToUser = false;
+            }
+            else
+            {
+                _belongsToUser = true;
+            }
+        } // check if wallet belongs to someone (govnocode)
 
+    public void setDescription(string descr)
+        {
+            _descr = descr;
+        }
     }
 }

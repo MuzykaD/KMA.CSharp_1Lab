@@ -27,5 +27,16 @@ namespace CSharp.Lab1
         {
             return _currency;
         }
+
+
+        public void setDescription(string descr)
+        {
+            _descr = descr;
+        }
+
+        public void setDate(string date)
+        {
+            _date = date;
+        }
     }
 }

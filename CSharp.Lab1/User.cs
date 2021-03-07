@@ -23,6 +23,7 @@ namespace CSharp.Lab1
      public void addWalletToUser(Wallet wallet)
         {
             _wallets.Add(wallet);
+            wallet.setBelonging();
         }
 
      public void walletInfo()
@@ -35,5 +36,13 @@ namespace CSharp.Lab1
             }
         }
 
+     public string getName()
+        {
+            return _name;
+        }
+        public string getSurname()
+        {
+            return _surname;
+        }
     }
 }
