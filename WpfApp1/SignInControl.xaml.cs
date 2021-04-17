@@ -24,9 +24,9 @@ namespace WpfApp1
         private SignInViewModel _viewModel;
         public SignInControl()
         {
+            InitializeComponent();
             _viewModel = new SignInViewModel();
             this.DataContext = _viewModel;
-            InitializeComponent();
             BSignIn.IsEnabled = false;
         }
 
@@ -79,6 +79,12 @@ namespace WpfApp1
                 BSignIn.IsEnabled = true;
         }
 
+        private void BMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Content = new Menu();
 
+
+
+        }
     }
 }
