@@ -7,6 +7,7 @@ namespace CSharp.Lab1.Tests
 {
     public class UsersTests
     {
+        /*
         [Fact]
         void shouldCreateUser() {
             var user = new User("first name","last name","mail@mail.com");
@@ -23,5 +24,6 @@ namespace CSharp.Lab1.Tests
             user.addWalletToUser(new Wallet("Wallet", 0,"USD"));
             //Assert.Equal(1, user.getWallets().Count());
         }
+        */
     }
 }

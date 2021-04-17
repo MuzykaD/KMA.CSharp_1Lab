@@ -8,6 +8,7 @@ namespace CSharp.Lab1.Tests
     
    public class WalletsTests
     {
+        /*
         [Fact]
         void shouldCreateWallet() {
             var wallet = new Wallet("MyDollars", 0, "DOL");
@@ -40,6 +41,7 @@ namespace CSharp.Lab1.Tests
             wallet.removeTransaction(transaction);
             Assert.True(0 == wallet.GetTransactions().Count);
         }
-
+*/
     }
+
 }

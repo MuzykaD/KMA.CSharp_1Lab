@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Lab1", "CSharp.Lab1\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B03711C2-6AF3-48CB-A483-8827DB37BC42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Lab1.Tests", "CSharp.Lab1.Tests\CSharp.Lab1.Tests.csproj", "{E9644310-7F8C-4888-AB21-A509C8018E2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Lab1.Tests", "CSharp.Lab1.Tests\CSharp.Lab1.Tests.csproj", "{E9644310-7F8C-4888-AB21-A509C8018E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{CC8B281B-0E72-4057-82A3-380354A61907}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{E9644310-7F8C-4888-AB21-A509C8018E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9644310-7F8C-4888-AB21-A509C8018E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9644310-7F8C-4888-AB21-A509C8018E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8B281B-0E72-4057-82A3-380354A61907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8B281B-0E72-4057-82A3-380354A61907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8B281B-0E72-4057-82A3-380354A61907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8B281B-0E72-4057-82A3-380354A61907}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
