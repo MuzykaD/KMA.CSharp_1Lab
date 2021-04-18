@@ -36,5 +36,10 @@ namespace WpfApp1
         {
             Content = new TransactionManager();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Content = new SignInControl();
+        }
     }
 }

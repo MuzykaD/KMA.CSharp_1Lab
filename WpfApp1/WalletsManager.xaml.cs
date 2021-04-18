@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using WpfApp1.Tools.Managers;
 namespace WpfApp1
 {
     /// <summary>
@@ -20,9 +22,30 @@ namespace WpfApp1
     /// </summary>
     public partial class WalletsManager : UserControl
     {
+        private Wallet _currentWallet;
+        
+        
+        public ObservableCollection<Wallet> Wallets { get; set; }
+
+        User s = StationManager.Instance.DataStorage.GetCurrUser();
+        public Wallet CurrentWallet
+        {
+            get
+                {
+                return _currentWallet;
+                }
+            set
+                {
+                _currentWallet = value;
+               
+            }
+
+        }
+        
         public WalletsManager()
         {
             InitializeComponent();
+          //  Wallets = new ObservableCollection<Wallet>(s.GetWallets()) ;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) //Back to menu
@@ -43,6 +66,11 @@ namespace WpfApp1
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Content = new WalletDelete();
+        }
+
+        private void Transaction(object sender, RoutedEventArgs e)
+        {
+            Content = new TransactionManager();
         }
     }
 }

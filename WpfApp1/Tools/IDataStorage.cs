@@ -17,6 +17,6 @@ namespace WpfApp1.Tools
 
         Wallet UpdateWallet(string oldName, string newName, string description);
         User AuthenticateUser(AuthUser authUser);
-
+        User GetCurrUser();
     }
 }

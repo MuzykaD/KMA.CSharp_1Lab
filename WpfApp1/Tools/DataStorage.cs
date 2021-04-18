@@ -34,6 +34,10 @@ namespace WpfApp1.Tools
             users.Add(user);
             SaveChanges();
         }
+        public User GetCurrUser()
+        {
+            return currentUser;
+        }
 
         public Wallet AddWallet(Wallet wallet)
         {

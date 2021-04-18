@@ -34,9 +34,9 @@ namespace WpfApp1
         }
 
 
-        private void BClose_Click(object sender, RoutedEventArgs e)
+        private void BSignUp_Click(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            Content = new SignUpView();
         }
 
         private void BSignIn_Click(object sender, RoutedEventArgs e)

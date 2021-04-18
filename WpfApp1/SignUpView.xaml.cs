@@ -16,29 +16,23 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for TransactionManager.xaml
+    /// Interaction logic for SignUpView.xaml
     /// </summary>
-    public partial class TransactionManager : UserControl
+    public partial class SignUpView : UserControl
     {
-        public TransactionManager()
+        public SignUpView()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //sign up button
         {
-            Content = new WalletsManager();
+            Content = new SignInControl();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e) //back button
         {
-            Content = new TransactionEdit();
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Content = new TransactionAdd();
+            Content = new SignInControl();
         }
     }
 }

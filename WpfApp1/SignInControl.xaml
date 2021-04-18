@@ -30,7 +30,7 @@
             </StackPanel>
 
             <Button Name="BSignIn" Grid.Column="0" Grid.Row="2" Margin="10" Click="BSignIn_Click">Sign In</Button>
-            <Button Name="BClose" Grid.Column="1" Grid.Row="2" Margin="10" Click="BClose_Click">Close</Button>
+        <Button Name="BClose" Grid.Column="1" Grid.Row="2" Margin="10" Click="BSignUp_Click">Sign Up</Button>
         <Button Name="BMenu" Grid.Column="0" Grid.Row="3" Margin="10" Grid.ColumnSpan="2" Click="BMenu_Click">Menu</Button>
         </Grid>
 

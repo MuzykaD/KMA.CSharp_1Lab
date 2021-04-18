@@ -21,7 +21,7 @@
         <Button Grid.Column="0" Grid.Row="0" Width="120" Height="50" Click="Button_Click_1">Add Transaction</Button>
         <Button Grid.Column="0" Grid.Row="1" Width="120" Height="50" Click="Button_Click_2">Edit Transaction</Button>
         <Button  Grid.Column="0" Grid.Row="2"  Width="120" Height="50">Delete Transaction</Button>
-        <Button Grid.Column="0" Grid.Row="4" Height="50" Width="120" Click="Button_Click" >Back To Menu</Button>
+        <Button Grid.Column="0" Grid.Row="4" Height="50" Width="120" Click="Button_Click" >Back To Wallet</Button>
 
 
 
