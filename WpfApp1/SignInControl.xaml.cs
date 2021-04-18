@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Tools;
+using WpfApp1.Tools.Managers;
 
 namespace WpfApp1
 {
@@ -25,6 +27,7 @@ namespace WpfApp1
         public SignInControl()
         {
             InitializeComponent();
+            StationManager.Instance.Initialize(new DataStorage());
             _viewModel = new SignInViewModel();
             this.DataContext = _viewModel;
             BSignIn.IsEnabled = false;
@@ -52,23 +55,17 @@ namespace WpfApp1
                 };
                 var service = new AuthService();
                 User user = null;
-                try
+
+                user = service.Authenticate(authUser);
+                if (user == null)
                 {
-                    user = service.Authenticate(authUser);
-
-
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error!" + ex);
-
+                    MessageBox.Show("Error! No such user registrered");
                     return;
                 }
                 MessageBox.Show($" Success {user.getName()}, {user.getSurname()}");
-
+                Content = new Menu();
             }
-            
+
         }
 
         private void Input_Changed(object sender, TextChangedEventArgs e)

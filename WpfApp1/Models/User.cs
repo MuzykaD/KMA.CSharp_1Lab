@@ -12,25 +12,48 @@ namespace WpfApp1
         string _name;
         string _surname;
         string _mail;
+        string _password;
         List<Wallet> _wallets;
         public string _login;
 
         //constructor
-        public User(string name, string surname, string mail, string login)
+        public User(string name, string surname, string mail, string password, string login)
         {
             _name = name;
             _surname = surname;
             _mail = mail;
             _wallets = new List<Wallet>();
             _login = login;
+            _password = password;
         }
-        public void assignCategotyToWallet(string category, Wallet wallet) {
+        public string GetLogin()
+        {
+            return _login;
+        }
+        public void assignCategotyToWallet(string category, Wallet wallet)
+        {
             wallet.addCategory(category);
         }
-        public void addWalletToUser(Wallet wallet)
+        public Wallet addWalletToUser(Wallet wallet)
         {
-            _wallets.Add(wallet);
+            if (!containsWalletByName(wallet.getName()))
+            {
+                _wallets.Add(wallet);
+                return wallet;
+            }
+            return null;
 
+        }
+        private bool containsWalletByName(string name)
+        {
+            foreach (Wallet w in _wallets)
+            {
+                if (w.getName().Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public void removeWalletToUser(Wallet wallet)
         {
@@ -71,6 +94,10 @@ namespace WpfApp1
         public string getMail()
         {
             return _mail;
+        }
+        public string getPassword()
+        {
+            return _password;
         }
 
         public void setName(string name)

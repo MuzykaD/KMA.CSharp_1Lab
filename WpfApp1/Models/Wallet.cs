@@ -8,7 +8,6 @@ namespace WpfApp1
     public class Wallet
     {
         //not all fields used in constructor cause they are not necessary in commin work
-        User _user;
         string _name;
         double _currBalance;
         double _startBalance;
@@ -18,13 +17,13 @@ namespace WpfApp1
 
         List<Transaction> _transactions;
 
-        public Wallet(User user, string name, double balance, string currency)
+        public Wallet(string name, double balance, string currency, string description)
         {
-            _user = user;
             _name = name;
             _currBalance = balance;
             _startBalance = balance;
             _currency = currency;
+            _descr = description;
             _transactions = new List<Transaction>();
             categories = new List<string>();
         }

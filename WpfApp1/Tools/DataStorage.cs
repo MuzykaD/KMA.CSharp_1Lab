@@ -11,6 +11,7 @@ namespace WpfApp1.Tools
     {
 
         private List<User> users;
+        private User currentUser;
 
         internal DataStorage()
         {
@@ -34,23 +35,45 @@ namespace WpfApp1.Tools
             SaveChanges();
         }
 
-        public void AddWallet(User user, Wallet wallet)
+        public Wallet AddWallet(Wallet wallet)
         {
-            users[users.IndexOf(user)].addWalletToUser(wallet);
+          Wallet w=  currentUser.addWalletToUser(wallet);
+            SaveChanges();
+            return w;
+        }
+
+        public void DeleteWallet(Wallet wallet)
+        {
+            currentUser.GetWallets().Remove(wallet);
             SaveChanges();
         }
 
-        public void DeleteWallet(User user, Wallet wallet)
+        public void UpdateWallet(Wallet walletToChange, Wallet newWallet)
         {
-            users[users.IndexOf(user)].GetWallets().Remove(wallet);
-            SaveChanges();
-        }
-
-        public void UpdateWallet(User user, Wallet walletToChange, Wallet newWallet)
-        {
-            List<Wallet> wallets = users[users.IndexOf(user)].GetWallets();
+            List<Wallet> wallets = currentUser.GetWallets();
             wallets[wallets.IndexOf(walletToChange)] = newWallet;
             SaveChanges();
+        }
+
+        public User AuthenticateUser(AuthUser authUser)
+        {
+            foreach (User user in users)
+            {
+                if (user.GetLogin().Equals(authUser._login) && user.getPassword().Equals(authUser._password))
+                {
+                    currentUser = user;
+                    return user;
+                }
+            }
+            return null;
+        }
+
+        public List<Wallet> wallets()
+        {
+            if (currentUser != null) {
+                return currentUser.GetWallets();
+            }
+            return null;
         }
     }
 }
