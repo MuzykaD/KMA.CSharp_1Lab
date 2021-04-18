@@ -4,7 +4,8 @@ using System.Text;
 
 namespace WpfApp1
 {
-   public class Transaction
+    [Serializable]
+    public class Transaction
     {
         //not all fields used in constructor cause they are not necessary in commin work
         double _sum;
@@ -46,7 +47,5 @@ namespace WpfApp1
         {
             _date = date;
         }
-
-       
     }
 }
