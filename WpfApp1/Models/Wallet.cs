@@ -4,6 +4,7 @@ using System.Text;
 
 namespace WpfApp1
 {
+    [Serializable]
     public class Wallet
     {
         //not all fields used in constructor cause they are not necessary in commin work
