@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WpfApp1
 {
-    []
+    [Serializable]
     public class User
     {
         private List<string> categories = new List<string>();
