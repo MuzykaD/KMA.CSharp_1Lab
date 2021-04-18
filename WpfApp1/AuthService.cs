@@ -10,6 +10,7 @@ namespace WpfApp1
     {
         public User Authenticate(AuthUser auth)
         {
+            
             return new User("Test", "test", "@gmail", "login");
         }
 

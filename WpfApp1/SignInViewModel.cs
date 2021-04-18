@@ -40,12 +40,6 @@ namespace WpfApp1
                 _authUser._password = value;
 
             }
-
-
-
-
         }
-
-
     }
 }
