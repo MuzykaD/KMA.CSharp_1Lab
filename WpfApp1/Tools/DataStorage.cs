@@ -37,22 +37,22 @@ namespace WpfApp1.Tools
 
         public Wallet AddWallet(Wallet wallet)
         {
-          Wallet w=  currentUser.addWalletToUser(wallet);
+            Wallet w = currentUser.addWalletToUser(wallet);
             SaveChanges();
             return w;
         }
 
-        public void DeleteWallet(Wallet wallet)
+        public void DeleteWallet(string wallet)
         {
-            currentUser.GetWallets().Remove(wallet);
+            currentUser.RemoveWallet(wallet);
             SaveChanges();
         }
 
-        public void UpdateWallet(Wallet walletToChange, Wallet newWallet)
+        public Wallet UpdateWallet(string oldName, string newName, string description)
         {
-            List<Wallet> wallets = currentUser.GetWallets();
-            wallets[wallets.IndexOf(walletToChange)] = newWallet;
+            Wallet w = currentUser.UpdateWalletByName(oldName, newName, description);
             SaveChanges();
+            return w;
         }
 
         public User AuthenticateUser(AuthUser authUser)
@@ -70,7 +70,8 @@ namespace WpfApp1.Tools
 
         public List<Wallet> wallets()
         {
-            if (currentUser != null) {
+            if (currentUser != null)
+            {
                 return currentUser.GetWallets();
             }
             return null;

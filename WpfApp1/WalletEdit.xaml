@@ -20,11 +20,13 @@
         </Grid.RowDefinitions>
        
         <TextBlock Grid.Row="0" Grid.Column="1" FontSize = "19" Margin = "3,30,0,0">You can change only name and description of the Wallet!</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="0" FontSize = "19" Margin = "3,30,0,0">Wallet Description</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0" FontSize = "20" Margin = "3,30,0,0">Wallet Name</TextBlock>
-       
-        <TextBox  Grid.Row="1" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
-        <TextBox  Grid.Row="2" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="0" FontSize = "20" Margin = "3,30,0,0">Old Wallet Name</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" FontSize = "20" Margin = "3,30,0,0">New Wallet Name</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" FontSize = "19" Margin = "3,30,0,0">Wallet Description</TextBlock>
+
+        <TextBox Name="OldName" Grid.Row="1" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
+        <TextBox Name="NewName" Grid.Row="2" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
+        <TextBox Name="Description" Grid.Row="3" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
       
 
         <Button Grid.Column="0" Grid.Row="4" Height="50" Width="120" Click="Button_Click">Back To Menu</Button>

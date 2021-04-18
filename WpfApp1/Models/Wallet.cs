@@ -51,6 +51,9 @@ namespace WpfApp1
             _currBalance -= transaction.getSum();
         }
 
+        public void SetName(string name) {
+            _name = name;
+        }
         public List<Transaction> GetTransactions()
         {
             return _transactions;

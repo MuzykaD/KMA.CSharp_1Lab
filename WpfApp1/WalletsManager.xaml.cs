@@ -39,5 +39,10 @@ namespace WpfApp1
         {
             Content = new WalletEdit();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Content = new WalletDelete();
+        }
     }
 }

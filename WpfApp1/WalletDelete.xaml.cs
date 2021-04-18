@@ -17,33 +17,29 @@ using WpfApp1.Tools.Managers;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for WalletEdit.xaml
+    /// Логика взаимодействия для WalletDelete.xaml
     /// </summary>
-    public partial class WalletEdit : UserControl
+    public partial class WalletDelete : UserControl
     {
-        public WalletEdit()
+        public WalletDelete()
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e) //to menu
+        private void Button_Click(object sender, RoutedEventArgs e) //Back to menu button
         {
             Content = new WalletsManager();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) //save editted
+        private void Button_Click_1(object sender, RoutedEventArgs e) //Back to menu button
         {
-            string oldName = OldName.Text;
-            string newName = NewName.Text;
-            string description = Description.Text;
             try
             {
-                StationManager.Instance.DataStorage.UpdateWallet(oldName, newName, description);
-                Content = new Menu();
+                StationManager.Instance.DataStorage.DeleteWallet(Name.Text);
+                Content = new WalletsManager();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }
+            } 
         }
     }
 }

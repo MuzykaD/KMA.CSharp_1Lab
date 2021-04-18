@@ -44,6 +44,57 @@ namespace WpfApp1
             return null;
 
         }
+        public Wallet UpdateWalletByName(string oldname, string newname, string desc)
+        {
+            if (!containsWalletByName(oldname))
+            {
+                throw new Exception("No wallet with name '" + oldname + "'");
+            }
+
+            if (containsWalletByName(newname))
+            {
+                throw new Exception("wallet with name '" + newname + "' already exists");
+            }
+
+            foreach (Wallet w in _wallets)
+            {
+                if (w.getName().Equals(oldname))
+                {
+                    w.SetName(newname);
+                    if (desc.Length > 0)
+                    {
+                        w.setDescription(desc);
+                    }
+                    return w;
+                }
+            }
+            throw new Exception("Smth goes wrong, try again later");
+
+
+
+        }
+
+        internal void RemoveWallet(string wallet)
+        {
+            if (!containsWalletByName(wallet))
+            {
+                throw new Exception("No wallet with name '" + wallet + "'");
+            }
+
+            foreach (Wallet w in _wallets)
+            {
+                if (w.getName().Equals(wallet))
+                {
+                    _wallets.Remove(w);
+                    return;
+                }
+            }
+            throw new Exception("Smth goes wrong, try again later");
+
+
+
+        }
+
         private bool containsWalletByName(string name)
         {
             foreach (Wallet w in _wallets)

@@ -9,6 +9,7 @@ namespace WpfApp1
     {
         //not all fields used in constructor cause they are not necessary in commin work
         double _sum;
+
         string _currency;
         string _descr;
         string _date;
