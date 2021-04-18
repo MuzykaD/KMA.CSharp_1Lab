@@ -41,7 +41,7 @@ namespace WpfApp1
 
         private void BSignIn_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Text))
+            if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Password))
             {
                 MessageBox.Show("Error! Login or Password is invalid");
             }
@@ -51,7 +51,7 @@ namespace WpfApp1
                 var authUser = new AuthUser()
                 {
                     _login = UserLogin.Text,
-                    _password = UserPas.Text
+                    _password = UserPas.Password
                 };
                 var service = new AuthService();
                 User user = null;
@@ -70,10 +70,17 @@ namespace WpfApp1
 
         private void Input_Changed(object sender, TextChangedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Text))
+            if (String.IsNullOrWhiteSpace(UserLogin.Text))
                 BSignIn.IsEnabled = false;
             else
                 BSignIn.IsEnabled = true;
+        }
+        private void Input_Changed(object sender, RoutedEventHandler e)
+        {
+           /* if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Password))
+                BSignIn.IsEnabled = false;
+            else
+                BSignIn.IsEnabled = true;*/
         }
 
         private void BMenu_Click(object sender, RoutedEventArgs e)

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Tools.Managers;
 
 namespace WpfApp1
 {
@@ -32,7 +33,21 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e) //back button
         {
-            Content = new SignInControl();
+            string name = Name.Text;
+            string surname = Surname.Text;
+            string email = Email.Text;
+            string login = Login.Text;
+            string password = Password.Password;
+            try
+            {
+                StationManager.Instance.DataStorage.AddUser(new User(name, surname, email, login, password));
+                Content = new Menu();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

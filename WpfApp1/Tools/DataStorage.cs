@@ -31,8 +31,22 @@ namespace WpfApp1.Tools
         }
         public void AddUser(User user)
         {
+            if (userWithLoginExists(user.GetLogin()))
+            {
+                throw new Exception("User with login '" + user.GetLogin() + "' already exists");
+            }
             users.Add(user);
+            currentUser = user;
             SaveChanges();
+        }
+        private bool userWithLoginExists(string login)
+        {
+            foreach (User user in users)
+            {
+                if (user.GetLogin().Equals(login))
+                    return true;
+            }
+            return false;
         }
         public User GetCurrUser()
         {

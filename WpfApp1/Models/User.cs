@@ -17,7 +17,7 @@ namespace WpfApp1
         public string _login;
 
         //constructor
-        public User(string name, string surname, string mail, string password, string login)
+        public User(string name, string surname, string mail, string login, string password)
         {
             _name = name;
             _surname = surname;
