@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WpfApp1
 {
-    []
+    [Serializable]
     public class User
     {
         private List<string> categories = new List<string>();
@@ -12,25 +12,99 @@ namespace WpfApp1
         string _name;
         string _surname;
         string _mail;
+        string _password;
         List<Wallet> _wallets;
         public string _login;
 
         //constructor
-        public User(string name, string surname, string mail, string login)
+        public User(string name, string surname, string mail, string login, string password)
         {
             _name = name;
             _surname = surname;
             _mail = mail;
             _wallets = new List<Wallet>();
             _login = login;
+            _password = password;
         }
-        public void assignCategotyToWallet(string category, Wallet wallet) {
+        public string GetLogin()
+        {
+            return _login;
+        }
+        public void assignCategotyToWallet(string category, Wallet wallet)
+        {
             wallet.addCategory(category);
         }
-        public void addWalletToUser(Wallet wallet)
+        public Wallet addWalletToUser(Wallet wallet)
         {
-            _wallets.Add(wallet);
+            if (!containsWalletByName(wallet.getName()))
+            {
+                _wallets.Add(wallet);
+                return wallet;
+            }
+            return null;
 
+        }
+        public Wallet UpdateWalletByName(string oldname, string newname, string desc)
+        {
+            if (!containsWalletByName(oldname))
+            {
+                throw new Exception("No wallet with name '" + oldname + "'");
+            }
+
+            if (containsWalletByName(newname))
+            {
+                throw new Exception("wallet with name '" + newname + "' already exists");
+            }
+
+            foreach (Wallet w in _wallets)
+            {
+                if (w.getName().Equals(oldname))
+                {
+                    w.SetName(newname);
+                    if (desc.Length > 0)
+                    {
+                        w.setDescription(desc);
+                    }
+                    return w;
+                }
+            }
+            throw new Exception("Smth goes wrong, try again later");
+
+
+
+        }
+
+        internal void RemoveWallet(string wallet)
+        {
+            if (!containsWalletByName(wallet))
+            {
+                throw new Exception("No wallet with name '" + wallet + "'");
+            }
+
+            foreach (Wallet w in _wallets)
+            {
+                if (w.getName().Equals(wallet))
+                {
+                    _wallets.Remove(w);
+                    return;
+                }
+            }
+            throw new Exception("Smth goes wrong, try again later");
+
+
+
+        }
+
+        private bool containsWalletByName(string name)
+        {
+            foreach (Wallet w in _wallets)
+            {
+                if (w.getName().Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public void removeWalletToUser(Wallet wallet)
         {
@@ -71,6 +145,10 @@ namespace WpfApp1
         public string getMail()
         {
             return _mail;
+        }
+        public string getPassword()
+        {
+            return _password;
         }
 
         public void setName(string name)

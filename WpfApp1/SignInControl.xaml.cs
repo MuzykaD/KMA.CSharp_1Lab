@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Tools;
+using WpfApp1.Tools.Managers;
 
 namespace WpfApp1
 {
@@ -24,21 +26,22 @@ namespace WpfApp1
         private SignInViewModel _viewModel;
         public SignInControl()
         {
+            InitializeComponent();
+            StationManager.Instance.Initialize(new DataStorage());
             _viewModel = new SignInViewModel();
             this.DataContext = _viewModel;
-            InitializeComponent();
             BSignIn.IsEnabled = false;
         }
 
 
-        private void BClose_Click(object sender, RoutedEventArgs e)
+        private void BSignUp_Click(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            Content = new SignUpView();
         }
 
         private void BSignIn_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Text))
+            if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Password))
             {
                 MessageBox.Show("Error! Login or Password is invalid");
             }
@@ -48,37 +51,36 @@ namespace WpfApp1
                 var authUser = new AuthUser()
                 {
                     _login = UserLogin.Text,
-                    _password = UserPas.Text
+                    _password = UserPas.Password
                 };
                 var service = new AuthService();
                 User user = null;
-                try
+
+                user = service.Authenticate(authUser);
+                if (user == null)
                 {
-                    user = service.Authenticate(authUser);
-
-
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error!" + ex);
-
+                    MessageBox.Show("Error! No such user registrered");
                     return;
                 }
-                MessageBox.Show($" Success {user.getName()}, {user.getSurname()}");
-
+                //MessageBox.Show($" Success {user.getName()}, {user.getSurname()}");
+                Content = new Menu();
             }
-            
+
         }
 
         private void Input_Changed(object sender, TextChangedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Text))
+            if (String.IsNullOrWhiteSpace(UserLogin.Text))
                 BSignIn.IsEnabled = false;
             else
                 BSignIn.IsEnabled = true;
         }
-
-
+        private void Input_Changed(object sender, RoutedEventHandler e)
+        {
+           /* if (String.IsNullOrWhiteSpace(UserLogin.Text) || String.IsNullOrWhiteSpace(UserPas.Password))
+                BSignIn.IsEnabled = false;
+            else
+                BSignIn.IsEnabled = true;*/
+        }
     }
 }

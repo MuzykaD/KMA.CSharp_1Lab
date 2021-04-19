@@ -16,15 +16,19 @@ namespace WpfApp1
         List<string> categories;
 
         List<Transaction> _transactions;
-
-        public Wallet(string name, double balance, string currency)
+        public Wallet(string name, double balance, string currency, string description)
         {
             _name = name;
             _currBalance = balance;
             _startBalance = balance;
             _currency = currency;
+            _descr = description;
             _transactions = new List<Transaction>();
             categories = new List<string>();
+        }
+        public String GetCurrency()
+        {
+            return _currency;
         }
         public void addCategory(string category)
         {
@@ -50,6 +54,10 @@ namespace WpfApp1
             _currBalance -= transaction.getSum();
         }
 
+        public void SetName(string name)
+        {
+            _name = name;
+        }
         public List<Transaction> GetTransactions()
         {
             return _transactions;
@@ -115,6 +123,15 @@ namespace WpfApp1
         public void setDescription(string descr)
         {
             _descr = descr;
+        }
+
+        override
+        public string ToString()
+        {
+            return
+                "Name: " + _name + "\n" +
+                "Current balance: " + _currBalance + " " + _currency + "\n"+
+                "Description: " + _descr;
         }
     }
 }

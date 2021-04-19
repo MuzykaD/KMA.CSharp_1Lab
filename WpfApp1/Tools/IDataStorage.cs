@@ -10,10 +10,28 @@ namespace WpfApp1.Tools
     {
         void AddUser(User user);
 
-        void AddWallet(User user, Wallet wallet);
+        List<Wallet> wallets();
+        Wallet AddWallet(Wallet wallet);
+       
+        void DeleteWallet(Wallet wallet);
 
-        void DeleteWallet(User user, Wallet wallet);
+        Wallet UpdateWallet(string oldName, string newName, string description);
+        User AuthenticateUser(AuthUser authUser);
+        User GetCurrUser();
 
-        void UpdateWallet(User user, Wallet walletToChange, Wallet newWallet);
+        void SetCurrentWallet(Wallet wallet);
+
+        void addTransaction(Transaction transaction);
+
+        void removeTransaction(Transaction transaction);
+
+        void updateTransaction(string decsription);
+
+        string CurrentWallet();
+        string CurrentBalance();
+        Wallet GetCurrentWallet();
+
+        void setCurrentTransaction(Transaction transaction);
     }
+
 }

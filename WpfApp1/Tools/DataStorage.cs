@@ -11,7 +11,9 @@ namespace WpfApp1.Tools
     {
 
         private List<User> users;
-
+        private User currentUser;
+        private Wallet currentWallet;
+        private Transaction currentTransaction;
         internal DataStorage()
         {
             try
@@ -30,27 +32,111 @@ namespace WpfApp1.Tools
         }
         public void AddUser(User user)
         {
+            if (userWithLoginExists(user.GetLogin()))
+            {
+                throw new Exception("User with login '" + user.GetLogin() + "' already exists");
+            }
             users.Add(user);
+            currentUser = user;
+            SaveChanges();
+        }
+        private bool userWithLoginExists(string login)
+        {
+            foreach (User user in users)
+            {
+                if (user.GetLogin().Equals(login))
+                    return true;
+            }
+            return false;
+        }
+        public User GetCurrUser()
+        {
+            return currentUser;
+        }
+
+        public Wallet AddWallet(Wallet wallet)
+        {
+            Wallet w = currentUser.addWalletToUser(wallet);
+            SaveChanges();
+            return w;
+        }
+
+        public void DeleteWallet(Wallet wallet)
+        {
+            currentUser.RemoveWallet(wallet.getName());
             SaveChanges();
         }
 
-        public void AddWallet(User user, Wallet wallet)
+        public Wallet UpdateWallet(string oldName, string newName, string description)
         {
-            users[users.IndexOf(user)].addWalletToUser(wallet);
+            Wallet w = currentUser.UpdateWalletByName(oldName, newName, description);
+            SaveChanges();
+            return w;
+        }
+
+        public User AuthenticateUser(AuthUser authUser)
+        {
+            foreach (User user in users)
+            {
+                if (user.GetLogin().Equals(authUser._login) && user.getPassword().Equals(authUser._password))
+                {
+                    currentUser = user;
+                    return user;
+                }
+            }
+            return null;
+        }
+
+        public List<Wallet> wallets()
+        {
+            if (currentUser != null)
+            {
+                return currentUser.GetWallets();
+            }
+            return null;
+        }
+
+        public void SetCurrentWallet(Wallet wallet)
+        {
+            currentWallet = wallet;
+        }
+
+        public void addTransaction(Transaction transaction)
+        {
+            currentWallet.addTransaction(transaction);
             SaveChanges();
         }
 
-        public void DeleteWallet(User user, Wallet wallet)
+        public void removeTransaction(Transaction transaction)
         {
-            users[users.IndexOf(user)].GetWallets().Remove(wallet);
+            currentWallet.removeTransaction(transaction);
             SaveChanges();
         }
 
-        public void UpdateWallet(User user, Wallet walletToChange, Wallet newWallet)
+        public void updateTransaction(string decsription)
         {
-            List<Wallet> wallets = users[users.IndexOf(user)].GetWallets();
-            wallets[wallets.IndexOf(walletToChange)] = newWallet;
+            currentTransaction.setDescription(decsription);
             SaveChanges();
+            currentTransaction = null;
+        }
+
+        public string CurrentWallet()
+        {
+            return currentWallet.getName();
+        }
+        public Wallet GetCurrentWallet()
+        {
+            return currentWallet;
+        }
+
+        public string CurrentBalance()
+        {
+            return "Current balance: " + currentWallet.getCurrBalance() + " " + currentWallet.GetCurrency();
+        }
+
+        public void setCurrentTransaction(Transaction transaction)
+        {
+            currentTransaction = transaction;
         }
     }
 }

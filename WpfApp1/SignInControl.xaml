@@ -6,31 +6,32 @@
              xmlns:local="clr-namespace:WpfApp1"
              mc:Ignorable="d" 
             >
-   
-        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+    <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <StackPanel Grid.ColumnSpan="2">
-                <TextBlock Margin="10, 10, 10,  0" > Login</TextBlock>
-                <TextBox Name="UserLogin" Width="300" Margin="10" HorizontalAlignment="Stretch" TextChanged="Input_Changed"></TextBox>
-            </StackPanel>
-            <StackPanel Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="2">
-                <TextBlock Margin="10, 10, 10,  0" > Password</TextBlock>
-                <TextBox Name="UserPas" Width="300" Margin="10" HorizontalAlignment="Stretch" TextChanged="Input_Changed"></TextBox>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-            <Button Name="BSignIn" Grid.Column="0" Grid.Row="2" Margin="10" Click="BSignIn_Click">Sign In</Button>
-            <Button Name="BClose" Grid.Column="1" Grid.Row="2" Margin="10" Click="BClose_Click">Close</Button>
-        </Grid>
+        <StackPanel Grid.ColumnSpan="2">
+            <TextBlock Margin="10, 10, 10,  0" > Login</TextBlock>
+            <TextBox Name="UserLogin" Width="300" Margin="10" HorizontalAlignment="Stretch" TextChanged="Input_Changed" Text="{Binding Login}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock Margin="10, 10, 10,  0" > Password</TextBlock>
+            <PasswordBox Name="UserPas" Width="300" Margin="10" HorizontalAlignment="Stretch"></PasswordBox>
+        </StackPanel>
 
-    
+        <Button Name="BSignIn" Grid.Column="0" Grid.Row="2" Margin="10" Click="BSignIn_Click">Sign In</Button>
+        <Button Name="BClose" Grid.Column="1" Grid.Row="2" Margin="10" Click="BSignUp_Click">Sign Up</Button>
+    </Grid>
+
+
 </UserControl>

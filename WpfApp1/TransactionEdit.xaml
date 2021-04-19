@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="WpfApp1.TransactionEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="193*" ></ColumnDefinition>
+            <ColumnDefinition Width="607*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+           
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1"  FontSize = "20" Margin = "4,30,0,0">You can change only description of the Transaction</TextBlock>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" FontSize = "19" Margin = "3,30,0,0">Trasaction Description</TextBlock>
+
+        <TextBox Name="Descr" Grid.Row="1" Grid.Column="1" Margin="10,25,10,25"/>
+
+
+        <Button Grid.Column="0" Grid.Row="4" Click="Button_Click" Margin="22,20,22,20">Back To Menu</Button>
+        <Button Grid.Column="1" Grid.Row="4" Click="Button_Click_1" Margin="168,20,168,20">Save</Button>
+    </Grid>
+</UserControl>
