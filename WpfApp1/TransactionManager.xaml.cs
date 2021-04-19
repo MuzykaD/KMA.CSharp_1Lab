@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,19 +15,60 @@ namespace WpfApp1
     {
 
         public ObservableCollection<Transaction> Transactions { get; set; }
+
+        private int _page = 0;
         public TransactionManager()
         {
             InitializeComponent();
             WName.Text = StationManager.Instance.DataStorage.CurrentWallet();
             Wbal.Text = StationManager.Instance.DataStorage.CurrentBalance();
-            Wallet s = StationManager.Instance.DataStorage.GetCurrentWallet();
             Transactions = new ObservableCollection<Transaction>();
-            foreach (Transaction w in s.GetTransactions())
-            {
-                Transactions.Add(w);
-            }
+            paginated(0, 10);
 
+        }
+
+        public TransactionManager(int page)
+        {
+            _page = page;
+            InitializeComponent();
+            WName.Text = StationManager.Instance.DataStorage.CurrentWallet();
+            Wbal.Text = StationManager.Instance.DataStorage.CurrentBalance();
+            Transactions = new ObservableCollection<Transaction>();
+            paginated(page, 10);
+
+        }
+
+
+        private void paginated(int page, int pageSize)
+        {
+            List<Transaction> all = StationManager.Instance.DataStorage.GetCurrentWallet().GetTransactions();
+            for (int i = 0; i < pageSize && page * pageSize + i < all.Count; i++)
+            {
+                Transactions.Add(all[page * pageSize + i]);
+            }
+            if ((_page+1) * pageSize >= all.Count)
+            {
+                Next.IsEnabled = false;
+            }
+            else
+                Next.IsEnabled = true;
+
+            if (_page == 0)
+            {
+                Prev.IsEnabled = false;
+            }
+            else
+                Prev.IsEnabled = true;
             TransactionsList.ItemsSource = Transactions;
+
+        }
+        private void NextPage(object sender, RoutedEventArgs e)
+        {
+            Content = new TransactionManager(++_page);
+        }
+        private void PreviousPage(object sender, RoutedEventArgs e)
+        {
+            Content = new TransactionManager(--_page);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,7 +78,8 @@ namespace WpfApp1
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (TransactionsList.SelectedItem == null) {
+            if (TransactionsList.SelectedItem == null)
+            {
                 MessageBox.Show("No transaction selected");
                 return;
             }

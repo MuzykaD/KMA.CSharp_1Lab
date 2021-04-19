@@ -26,8 +26,10 @@
         <Button Grid.Column="0" Grid.Row="2" Width="120" Height="50" Click="Button_Click_2">Edit Transaction</Button>
         <Button  Grid.Column="0" Grid.Row="3"  Width="120" Height="50" Click="Button_Click_3">Delete Transaction</Button>
         <Button Grid.Column="0" Grid.Row="4" Height="50" Width="120" Click="Button_Click" >Back To Wallet</Button>
+        <Button Name="Next" Grid.Column="1" Grid.Row="4" Height="50" Width="120" Click="NextPage" >Next Page</Button>
+        <Button Name="Prev" Grid.Column="1" Grid.Row="4" Height="50" Width="120" Click="PreviousPage" HorizontalAlignment="Left" >Previous page</Button>
 
-        <ListBox x:Name="TransactionsList" MouseDoubleClick="listBox_SelectionChanged" Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" />
+        <ListBox x:Name="TransactionsList" MouseDoubleClick="listBox_SelectionChanged" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" />
 
 
     </Grid>
