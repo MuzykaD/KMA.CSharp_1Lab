@@ -5,7 +5,7 @@ using System.Text;
 namespace WpfApp1
 {
     [Serializable]
-   public class Transaction
+    public class Transaction
     {
         //not all fields used in constructor cause they are not necessary in commin work
         double _sum;
@@ -18,6 +18,14 @@ namespace WpfApp1
         {
             _sum = sum;
             _currency = curr;
+        }
+
+        public Transaction(double sum, string curr, string date, string descr)
+        {
+            _sum = sum;
+            _currency = curr;
+            _date = date;
+            _descr = descr;
         }
         //getters
         public double getSum()
@@ -49,6 +57,13 @@ namespace WpfApp1
             _date = date;
         }
 
-       
+        override
+             public string ToString()
+        {
+            return
+                "Sum: " + _sum + " " + _currency + "\n" +
+                "Date: " + _date + "\n" +
+                "Description: " + _descr;
+        }
     }
 }

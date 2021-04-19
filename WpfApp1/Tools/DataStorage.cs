@@ -12,7 +12,8 @@ namespace WpfApp1.Tools
 
         private List<User> users;
         private User currentUser;
-
+        private Wallet currentWallet;
+        private Transaction currentTransaction;
         internal DataStorage()
         {
             try
@@ -60,9 +61,9 @@ namespace WpfApp1.Tools
             return w;
         }
 
-        public void DeleteWallet(string wallet)
+        public void DeleteWallet(Wallet wallet)
         {
-            currentUser.RemoveWallet(wallet);
+            currentUser.RemoveWallet(wallet.getName());
             SaveChanges();
         }
 
@@ -93,6 +94,49 @@ namespace WpfApp1.Tools
                 return currentUser.GetWallets();
             }
             return null;
+        }
+
+        public void SetCurrentWallet(Wallet wallet)
+        {
+            currentWallet = wallet;
+        }
+
+        public void addTransaction(Transaction transaction)
+        {
+            currentWallet.addTransaction(transaction);
+            SaveChanges();
+        }
+
+        public void removeTransaction(Transaction transaction)
+        {
+            currentWallet.removeTransaction(transaction);
+            SaveChanges();
+        }
+
+        public void updateTransaction(string decsription)
+        {
+            currentTransaction.setDescription(decsription);
+            SaveChanges();
+            currentTransaction = null;
+        }
+
+        public string CurrentWallet()
+        {
+            return currentWallet.getName();
+        }
+        public Wallet GetCurrentWallet()
+        {
+            return currentWallet;
+        }
+
+        public string CurrentBalance()
+        {
+            return "Current balance: " + currentWallet.getCurrBalance() + " " + currentWallet.GetCurrency();
+        }
+
+        public void setCurrentTransaction(Transaction transaction)
+        {
+            currentTransaction = transaction;
         }
     }
 }

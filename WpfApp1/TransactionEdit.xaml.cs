@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Tools.Managers;
 
 namespace WpfApp1
 {
@@ -32,7 +33,14 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Content = new TransactionManager();
+            try
+            {
+                StationManager.Instance.DataStorage.updateTransaction(Descr.Text);
+                Content = new TransactionManager();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

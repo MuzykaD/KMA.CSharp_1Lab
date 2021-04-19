@@ -62,7 +62,7 @@ namespace WpfApp1
                     MessageBox.Show("Error! No such user registrered");
                     return;
                 }
-                MessageBox.Show($" Success {user.getName()}, {user.getSurname()}");
+                //MessageBox.Show($" Success {user.getName()}, {user.getSurname()}");
                 Content = new Menu();
             }
 
@@ -81,14 +81,6 @@ namespace WpfApp1
                 BSignIn.IsEnabled = false;
             else
                 BSignIn.IsEnabled = true;*/
-        }
-
-        private void BMenu_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new Menu();
-
-
-
         }
     }
 }

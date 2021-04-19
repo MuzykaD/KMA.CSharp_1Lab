@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Tools.Managers;
 
 namespace WpfApp1
 {
@@ -32,6 +33,13 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            string curr = StationManager.Instance.DataStorage.GetCurrentWallet().GetCurrency();
+            StationManager.Instance.DataStorage.addTransaction(new Transaction(
+                double.Parse(Sum.Text),
+                curr,
+                DateTime.Now.ToString(),
+                Descr.Text
+                ));
             Content = new TransactionManager();
         }
     }

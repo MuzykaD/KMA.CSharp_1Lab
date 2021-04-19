@@ -23,31 +23,42 @@ namespace WpfApp1
     public partial class WalletsManager : UserControl
     {
         private Wallet _currentWallet;
-        
-        
+
+
         public ObservableCollection<Wallet> Wallets { get; set; }
 
-        User s = StationManager.Instance.DataStorage.GetCurrUser();
+
         public Wallet CurrentWallet
         {
             get
-                {
+            {
                 return _currentWallet;
-                }
+            }
             set
-                {
+            {
                 _currentWallet = value;
-               
+
             }
 
         }
-        
+
         public WalletsManager()
         {
             InitializeComponent();
-            this.DataContext = Wallets;
-            Console.WriteLine(s.getName());
-            Wallets = new ObservableCollection<Wallet>(s.GetWallets()) ;
+            Wallets = new ObservableCollection<Wallet>();
+            foreach (Wallet w in StationManager.Instance.DataStorage.GetCurrUser().GetWallets())
+            {
+                Wallets.Add(w);
+            }
+
+            WalletsList.ItemsSource = Wallets;
+        }
+
+        private void listBox_SelectionChanged(object sender, MouseButtonEventArgs e)
+        {
+
+            StationManager.Instance.DataStorage.SetCurrentWallet((Wallet)WalletsList.SelectedItem);
+            Content = new TransactionManager();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) //Back to menu
@@ -62,17 +73,25 @@ namespace WpfApp1
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            if (WalletsList.SelectedItem == null) {
+                MessageBox.Show("No wallet selected");
+                return;
+            }
+            StationManager.Instance.DataStorage.SetCurrentWallet((Wallet)WalletsList.SelectedItem);
             Content = new WalletEdit();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Content = new WalletDelete();
-        }
-
-        private void Transaction(object sender, RoutedEventArgs e)
-        {
-            Content = new TransactionManager();
+            try
+            {
+                StationManager.Instance.DataStorage.DeleteWallet((Wallet)WalletsList.SelectedItem);
+                Content = new WalletsManager();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -40,14 +40,15 @@ namespace WpfApp1
         {
             string name = Name.Text;
             double balance = Double.Parse(Balance.Text);
-            string currency = Currency.SelectedItem.ToString();
+            ComboBoxItem cbi = (ComboBoxItem)Currency.SelectedItem;
+            string currency = cbi.Content.ToString();
             string description = Description.Text;
             Wallet w = StationManager.Instance.DataStorage.AddWallet(new Wallet(name, balance,currency,description));
             if (w == null) {
                 MessageBox.Show("Error! Wallet with such name already exists");
                 return;
             }
-            Content = new Menu();
+            Content = new WalletsManager();
 
         }
     }

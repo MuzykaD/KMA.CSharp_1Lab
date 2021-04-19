@@ -27,6 +27,10 @@ namespace WpfApp1
             _transactions = new List<Transaction>();
             categories = new List<string>();
         }
+        public String GetCurrency()
+        {
+            return _currency;
+        }
         public void addCategory(string category)
         {
             if (!categories.Contains(category))
@@ -51,7 +55,8 @@ namespace WpfApp1
             _currBalance -= transaction.getSum();
         }
 
-        public void SetName(string name) {
+        public void SetName(string name)
+        {
             _name = name;
         }
         public List<Transaction> GetTransactions()
@@ -119,6 +124,15 @@ namespace WpfApp1
         public void setDescription(string descr)
         {
             _descr = descr;
+        }
+
+        override
+        public string ToString()
+        {
+            return
+                "Name: " + _name + "\n" +
+                "Current balance: " + _currBalance + " " + _currency + "\n"+
+                "Description: " + _descr;
         }
     }
 }

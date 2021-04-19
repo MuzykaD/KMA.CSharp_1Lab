@@ -33,13 +33,14 @@ namespace WpfApp1
 
         private void Button_Click_1(object sender, RoutedEventArgs e) //save editted
         {
-            string oldName = OldName.Text;
-            string newName = NewName.Text;
+            string oldName = StationManager.Instance.DataStorage.GetCurrentWallet().getName();
+            string newName = NewName.Text.Length>0? NewName.Text: oldName;
             string description = Description.Text;
             try
             {
                 StationManager.Instance.DataStorage.UpdateWallet(oldName, newName, description);
-                Content = new Menu();
+                Content = new WalletsManager();
+                StationManager.Instance.DataStorage.SetCurrentWallet(null);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
