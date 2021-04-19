@@ -24,7 +24,7 @@
         <Button Grid.Column="1" Grid.Row="4" Height="50" Width="300" Click="Button_Click" >Back To Menu</Button>
         <Button Grid.Column="0" Grid.Row="4" Height="50" Width="120" Click="Transaction" >Transaction</Button>
 
-        <ListView ItemsSource="{Binding Wallets}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+        <ListView ItemsSource="{Binding Path = Wallets}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
             
         </ListView>
         

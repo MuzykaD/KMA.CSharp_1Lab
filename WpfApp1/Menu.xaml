@@ -17,7 +17,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="20" TextAlignment="Center" Margin="0, 30,0,0" Grid.ColumnSpan="2" >Main Menu Controlls </TextBlock>
+        <TextBlock FontSize="20" TextAlignment="Center" Margin="0, 30,0,0" Grid.ColumnSpan="2" >Main Menu Controlls</TextBlock>
         <Button Grid.Column="0" Grid.Row="1" Width="120" Height="50" Click="Button_Click">Wallets</Button>
         <Button  Grid.Column="0" Grid.Row="2"  Width="120" Height="50">User</Button>
         <Button Grid.Column="1" Grid.Row="4"  Height="50" Width="300" Click="Button_Click_2">Log Out</Button>

@@ -45,7 +45,9 @@ namespace WpfApp1
         public WalletsManager()
         {
             InitializeComponent();
-          //  Wallets = new ObservableCollection<Wallet>(s.GetWallets()) ;
+            this.DataContext = Wallets;
+            Console.WriteLine(s.getName());
+            Wallets = new ObservableCollection<Wallet>(s.GetWallets()) ;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) //Back to menu
