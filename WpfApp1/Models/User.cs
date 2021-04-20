@@ -26,6 +26,10 @@ namespace WpfApp1
             _login = login;
             _password = password;
         }
+        public void SetPassword(string password)
+        {
+            _password = password;
+        }
         public string GetLogin()
         {
             return _login;

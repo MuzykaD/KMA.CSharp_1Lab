@@ -28,7 +28,7 @@ namespace WpfApp1
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]{1,5}[.,]?[^0-9]{0,2}");
+            Regex regex = new Regex("[-]?[^0-9]{1,5}[.,]?[^0-9]{0,2}");
             e.Handled = regex.IsMatch(e.Text);
         }
         private void Button_Click(object sender, RoutedEventArgs e)

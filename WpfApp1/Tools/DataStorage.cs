@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using WpfApp1.Tools.Managers;
 
@@ -14,6 +15,8 @@ namespace WpfApp1.Tools
         private User currentUser;
         private Wallet currentWallet;
         private Transaction currentTransaction;
+
+        string hash = "shiugheiurg";
         internal DataStorage()
         {
             try
@@ -36,10 +39,27 @@ namespace WpfApp1.Tools
             {
                 throw new Exception("User with login '" + user.GetLogin() + "' already exists");
             }
+            user.SetPassword(crypt(user.getPassword()));
             users.Add(user);
             currentUser = user;
             SaveChanges();
         }
+
+        private string crypt(string v)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(v);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                using (TripleDESCryptoServiceProvider trides = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = trides.CreateEncryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    return Convert.ToBase64String(results, 0, results.Length);
+                }
+            }
+        }
+
         private bool userWithLoginExists(string login)
         {
             foreach (User user in users)
@@ -78,7 +98,7 @@ namespace WpfApp1.Tools
         {
             foreach (User user in users)
             {
-                if (user.GetLogin().Equals(authUser._login) && user.getPassword().Equals(authUser._password))
+                if (user.GetLogin().Equals(authUser._login) && user.getPassword().Equals(crypt(authUser._password)))
                 {
                     currentUser = user;
                     return user;
