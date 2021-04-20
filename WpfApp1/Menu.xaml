@@ -19,10 +19,10 @@
         </Grid.RowDefinitions>
         <TextBlock FontSize="20" TextAlignment="Center" Margin="0, 30,0,0" Grid.ColumnSpan="2" >Main Menu Controlls</TextBlock>
         <Button Grid.Column="0" Grid.Row="1" Width="120" Height="50" Click="Button_Click">Wallets</Button>
-        <Button  Grid.Column="0" Grid.Row="2"  Width="120" Height="50">User</Button>
-        <Button Grid.Column="1" Grid.Row="4"  Height="50" Width="300" Click="Button_Click_2">Log Out</Button>
+        
+        <Button Grid.Column="0" Grid.Row="2"  Height="50" Width="120" Click="Button_Click_2">Log Out</Button>
         <TextBlock FontSize="20" Grid.Column="1" Grid.Row="1" Margin="0,20,0,0"> Here you can manage your Wallets (add,edit,delete)</TextBlock>
-        <TextBlock FontSize="20" Grid.Column="1" Grid.Row="2" Margin="0,20,0,0"> Here you can change information about yourself  </TextBlock>
+        <TextBlock FontSize="20" Grid.Column="1" Grid.Row="2" Margin="0,20,0,0"> Click to return to Sign In window!  </TextBlock>
          
 
 

@@ -26,6 +26,8 @@ namespace WpfApp1
             _transactions = new List<Transaction>();
             categories = new List<string>();
         }
+
+       
         public String GetCurrency()
         {
             return _currency;
@@ -128,9 +130,12 @@ namespace WpfApp1
         override
         public string ToString()
         {
+            double diff = _currBalance - _startBalance;
+
             return
                 "Name: " + _name + "\n" +
                 "Current balance: " + _currBalance + " " + _currency + "\n"+
+                "Your balance changed by " + diff + " " + _currency +"\n" +
                 "Description: " + _descr;
         }
     }

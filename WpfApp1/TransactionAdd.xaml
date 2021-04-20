@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="0" FontSize = "20" Margin = "4,30,0,0">Trasaction Sum</TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="0" FontSize = "19" Margin = "3,30,0,0">Trasaction Description</TextBlock>
-        <TextBox Name="Sum"  Grid.Row="1" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
+        <TextBox Name="Sum" PreviewTextInput="NumberValidationTextBox" Grid.Row="1" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
         <TextBox Name="Descr"  Grid.Row="2" Grid.Column="1"  Height="40" Margin="10,0,10,0"></TextBox>
 
         <Button Grid.Column="0" Grid.Row="4" Height="50" Width="120" Click="Button_Click">Back To Menu</Button>
